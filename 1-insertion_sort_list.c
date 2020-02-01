@@ -4,51 +4,38 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *tmp1, *tmp2, *reverse, *cpy;
+	listint_t *tmp1, *cpy_tmp1, *reverse, *cpy_list;
 
-	tmp1 = *list;
-	tmp2 = tmp1->next;
+	tmp1 = (*list)->next;
 
-	while (tmp2->next)
+	while (tmp1->next != NULL)
 	{
-		printf("tmp1 = %d, tmp2 = %d\n", tmp1->n, tmp2->n);
-		if (tmp1->n < tmp2->n)
-                        printf("true\n");
+		if (tmp1->n > tmp1->prev->n)
+			tmp1 = tmp1->next;
 		else
 		{
-			reverse = tmp1->prev;
-			printf("reverse %d\n", reverse->n);
-			printf("false\n");
-			while (reverse->n < tmp2->n && reverse->prev != NULL)
+			cpy_tmp1 = tmp1;
+			reverse = tmp1;
+			tmp1 = tmp1->next;
+			tmp1->prev = cpy_tmp1->prev;
+			cpy_tmp1->prev->next = tmp1;
+			reverse = cpy_tmp1->prev;
+			while (reverse->prev != NULL)
 			{
-				printf("entro al while\n");
-				if (reverse->prev != NULL)
-					reverse = reverse->prev;
-				printf("reverse %d\n", reverse->n);
+				if (cpy_tmp1->n < reverse->n && reverse->prev != NULL && cpy_tmp1->n > reverse->prev->n)
+				{
+					reverse->prev->next = cpy_tmp1;
+					reverse->prev = cpy_tmp1;
+					cpy_tmp1->prev = reverse->prev;
+					cpy_tmp1->next = reverse;
+					cpy_list = *list;
+					printf("tmp1 = %d, cpy = %d, rev = %d\n", tmp1->n, cpy_tmp1->n, reverse->n);
+					print_list(cpy_list);
+					printf("hola paula");
+				}
+				reverse = reverse->prev;
 			}
-			cpy = tmp2;
-			tmp2->next = tmp1;
-			tmp2->prev = reverse;
-			reverse->next = tmp2;
-			tmp1->prev = tmp2;
-			tmp1->next = cpy->next;
-			cpy->next = tmp1;
-			print_list(*list);
+			printf("tmp1 = %d, cpy = %d, rev = %d", tmp1->n, cpy_tmp1->n, reverse->n);
 		}
-		tmp1 = tmp1->next;
-		tmp2 = tmp2->next;
 	}
 }
-
-/*
-if (tmp2->n < reverse->n && tmp2->n > reverse->prev->n)
-                                        printf("%d entre estos dos cabe el nodo\n", i);
-                                else
-                                {
-                                        printf("tengo que mover reverse\n");
-                                        if (reverse->prev != NULL)
-                                                reverse = reverse->prev;
-                                        printf("valor reverse %d\n", reverse->n);
-                                        break;
-                                }
-*/
