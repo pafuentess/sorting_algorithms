@@ -11,22 +11,22 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, tmp1, tmp2;
+	size_t i, j, i_tmp, tmp;
 
 	for (i = 0; i < size - 1; i++)
 	{
 		j = i;
 
-		for (tmp1 = i + 1; tmp1 < size; tmp1++)
+		for (i_tmp = i + 1; i_tmp < size; i_tmp++)
 		{
-			if (array[tmp1] < array[j])
-				j = tmp1;
+			if (array[i_tmp] < array[j])
+				j = i_tmp;
 		}
 		if (i != j)
 		{
-			tmp2 = array[i];
+			tmp = array[i];
 			array[i] = array[j];
-			array[j] = tmp2;
+			array[j] = tmp;
 			print_array(array, size);
 		}
 	}
