@@ -22,7 +22,7 @@ void swap_node(listint_t **list, listint_t *node)
 }
 
 /**
- * swap_node - function that sorts a doubly linked list of integers
+ * cocktail_sort_list - function that sorts a doubly linked list of integers
  * in ascending order using the Cocktail shaker sort algorithm
  * @list: head of doubly linked list
  * Return: nothing
