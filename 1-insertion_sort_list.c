@@ -2,12 +2,12 @@
 #include <stdio.h>
 
 /**
- * insertion_sort_list - unction that sorts a doubly linked list of integers
+ * insertion_sort_list - Function that sorts a doubly linked list of integers
  * in ascending order using the Insertion sort algorithm
  * @list: head of doubly linked list
  * Description: Write a function that sorts a doubly linked list of
  * integers in ascending order
- * Return:
+ * Return: nothing
  */
 
 void insertion_sort_list(listint_t **list)

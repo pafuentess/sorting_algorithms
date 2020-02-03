@@ -1,11 +1,20 @@
 #include "sort.h"
 #include <stdio.h>
 
+/**
+ * partition -  function that split the array with an pivot
+ * @array: array of integers
+ * @size: size of array
+ * @left: to the left
+ * @right: to the right
+ * Return: nothing
+ */
+
 size_t partition(int *array, size_t size, size_t left, size_t right)
 {
 	int pivot;
 	size_t i, tmp1, parttition;
-	
+
 	parttition = left - 1;
 	pivot = array[right];
 	i = left;
@@ -28,6 +37,15 @@ size_t partition(int *array, size_t size, size_t left, size_t right)
 	return (parttition);
 }
 
+/**
+ * quicksort - sort an array of integers using partition
+ * @array: array of integers
+ * @size: size of array
+ * @left: to the left
+ * @right: to the right
+ * Return: nothing
+ */
+
 void quicksort(int *array, size_t size, ssize_t left, ssize_t right)
 {
 	ssize_t pivot;
@@ -40,6 +58,14 @@ void quicksort(int *array, size_t size, ssize_t left, ssize_t right)
 
 	}
 }
+
+/**
+ * quick_sort - function that sorts an array of integers
+ * in ascending order using the Quick sort algorithm
+ * @array: array of integers
+ * @size: size of array
+ * Return: nothing
+ */
 
 void quick_sort(int *array, size_t size)
 {
