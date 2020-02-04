@@ -14,6 +14,9 @@ void counting_sort(int *array, size_t size)
 	int *count, *cpy;
 	size_t j, tmp, final_arr = 0;
 
+	if (array == NULL || size < 2)
+		return;
+
 	cpy = malloc(size * sizeof(int));
 	if (cpy == NULL)
 		return;
